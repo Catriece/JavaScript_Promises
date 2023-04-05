@@ -19,18 +19,21 @@ let pErr = document.getElementById("error");
 let ul = document.getElementById("list");
 
 
+
 getList().then((list) => {
-    console.log(list);
-    let listText = document.createTextNode(list);
-    ul.appendChild(listText);}).catch((err) => {
-      console.log(err)
-    let errMsg = document.createTextNode(err.message);
-    pErr.appendChild(errMsg);
-  });
+  console.log(list);
+  for (i = 0; i < list.length; i++) {
+    let item = document.createElement("li");
+    item.textContent = list[i];
+    ul.appendChild(item);
+  }
+}).catch((err) => {
+  console.log(err)
+let errMsg = document.createTextNode(err.message);
+pErr.appendChild(errMsg);
+});
 
 
-
-//.catch(() => {console.log(result)})
 
 // TODO: Handle the resolved or rejected states of the promise
 
